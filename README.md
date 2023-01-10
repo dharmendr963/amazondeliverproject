@@ -1,4 +1,4 @@
 amazondeliverproject
 project
 
-https://jpjcz.csb.app/
+Project link:-https://alanbinu-ecommerce.web.app/
