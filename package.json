@@ -1,63 +1,32 @@
-import "./styles.css";
-import "./App.css";
-import Header from "./Header";
-import Checkout from "./Checkout";
-import Home from "./Home";
-import Login from "./Login";
-import Payment from "./Payment";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { useEffect } from "react";
-import { auth } from "./firebase";
-import { useStateValue } from "./StateProvider";
-import { loadStripe } from "@stripe/stripe-js";
-import { Elements } from "@stripe/react-stripe-js";
-
-const promise = loadStripe(
-  "pk_test_51IrRNGFItZZLHtuqLTGT3NhyEY5XxVBlYPza6qUcZCzW6RlSSEITS9dAk5EOXDmgxwtg7db95IfgIJ5GWTWFk0Z400dSoubDXC"
-);
-
-export default function App() {
-  const [{}, dispatch] = useStateValue();
-  useEffect(() => {
-    // once app component loads
-    auth.onAuthStateChanged((authUser) => {
-      console.log("THE USE IS >>>", authUser);
-      if (authUser) {
-        // the user was logged in
-        dispatch({
-          type: "SET_USER",
-          user: authUser
-        });
-      } else {
-        // the user is logged out
-        dispatch({
-          type: "SET_USER",
-          user: null
-        });
-      }
-    });
-  }, []);
-  return (
-    <Router>
-      <div className="app">
-        <Header />
-        <Switch>
-          <Route path="/payment">
-            <Elements stripe={promise}>
-              <Payment />
-            </Elements>
-          </Route>
-          <Route path="/login">
-            <Login />
-          </Route>
-          <Route path="/checkout">
-            <Checkout />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
-        </Switch>
-      </div>
-    </Router>
-  );
+{
+  "name": "amazon-clone",
+  "homepage": "https://dharmendr963.github.io/amazondeliverproject",
+  "version": "1.0.0",
+  "description": "following clever programmer tutorial to make amazon clone!",
+  "keywords": [],
+  "main": "src/index.js",
+  "dependencies": {
+    "@material-ui/core": "4.11.0",
+    "@material-ui/icons": "4.9.1",
+    "react": "16.13.1",
+    "react-currency-format": "^1.0.0",
+    "react-dom": "16.13.1",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "3.4.3"
+  },
+  "devDependencies": {
+    "typescript": "3.8.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
