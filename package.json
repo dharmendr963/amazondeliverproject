@@ -1,6 +1,6 @@
 {
   "name": "amazon-clone",
-  "homepage": "https://dharmendr963.github.io/amazondeliverproject",
+  "homepge": "https://dharmendr963.gith.io/amazondeliverproject",
   "version": "1.0.0",
   "description": "following clever programmer tutorial to make amazon clone!",
   "keywords": [],
@@ -18,6 +18,8 @@
     "typescript": "3.8.3"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages-d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
